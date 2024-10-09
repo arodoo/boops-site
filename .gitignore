@@ -1,0 +1,38 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/build
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+/.idea
+/.vscode
+/.vs
+/.sublime
+/.vscode
+/.history
+/.settings
+/.c9
+/.project
+/.classpath
+/.launch
+
+# misc
+/.sass-cache
+/connect.lock
+
+# system files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+
