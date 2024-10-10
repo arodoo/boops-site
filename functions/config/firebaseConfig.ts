@@ -1,7 +1,9 @@
 import { initializeApp } from 'firebase/app'
 import * as dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config() // Cargar variables de entorno aquí también
+
+console.log('FIREBASE_API_KEY:', process.env.FIREBASE_API_KEY) // Verificar la clave API
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
