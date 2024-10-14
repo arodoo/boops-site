@@ -1,0 +1,29 @@
+import { registerUser, loginUser } from '../services/userService';
+import { auth } from '../config/firebaseConfig';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+
+jest.mock('firebase/auth');
+
+describe('User Service', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should register a new user', async () => {
+        const mockUserCredential = { user: { uid: '123' } };
+        (createUserWithEmailAndPassword as jest.Mock).mockResolvedValue(mockUserCredential);
+
+        const result = await registerUser('test@example.com', 'password123');
+        expect(result).toEqual(mockUserCredential);
+        expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(auth, 'test@example.com', 'password123');
+    });
+
+    it('should login an existing user', async () => {
+        const mockUserCredential = { user: { uid: '123' } };
+        (signInWithEmailAndPassword as jest.Mock).mockResolvedValue(mockUserCredential);
+
+        const result = await loginUser('test@example.com', 'password123');
+        expect(result).toEqual(mockUserCredential);
+        expect(signInWithEmailAndPassword).toHaveBeenCalledWith(auth, 'test@example.com', 'password123');
+    });
+});

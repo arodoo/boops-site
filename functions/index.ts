@@ -19,9 +19,4 @@ app.get('/api/protected', verifyToken, (req, res) => {
   res.send('This is a protected route')
 })
 
-const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`Server is running in http://localhost:${PORT}`)
-})
-
 export default app
