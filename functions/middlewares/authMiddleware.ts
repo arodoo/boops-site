@@ -4,7 +4,7 @@ import app from '../config/firebaseConfig'
 
 const auth = getAuth(app)
 
-const verifyToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const verifyToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const token = req.headers.authorization?.split(' ')[1]
 
   if (token == null) {
@@ -24,4 +24,11 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction): Pro
   }
 }
 
-export default verifyToken
+export const checkAdminRole = (req: Request, res: Response, next: NextFunction): void => {
+  const user = req as any
+  if (user.claims.admin) {
+    next()
+  } else {
+    res.status(403).send('Forbidden')
+  }
+}
