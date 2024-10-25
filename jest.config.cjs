@@ -9,7 +9,8 @@ module.exports = {
   testEnvironment: 'node',
   setupFiles: ['dotenv/config'],
   transform: {
-    '^.+\\.ts$': 'ts-jest'
+    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest'
   },
   //setupFilesAfterEnv: ['./jest.setup.js'], // Assuming you have a CommonJS setup file
   moduleNameMapper: {
